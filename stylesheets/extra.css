@@ -1,0 +1,115 @@
+/* ============================================================
+ * MyWiki 自定义样式
+ * 文件：docs/stylesheets/extra.css
+ * 对应 mkdocs.yml 中的 extra_css 配置
+ *
+ * 主要作用：恢复 Material for MkDocs 左侧导航的层级缩进。
+ *
+ * 问题背景：
+ * Material 的 navigation.sections / navigation.expand 会把一级分组
+ * 渲染成区块标题，并对子导航使用
+ *   margin-left: -0.6rem
+ * 抵消了 .md-nav__list 自带的 0.6rem 左内边距，
+ * 结果是「分组标题」和「分组下的页面」左边缘齐平，
+ * 看不出父子层级。
+ *
+ * 解决思路：
+ * 1. 把负的 margin-left 归零（仅在桌面侧边栏生效，不影响移动端抽屉）；
+ * 2. 给二级、三级导航加左引导线，并按 data-md-level 递增缩进；
+ * 3. 用高优先级选择器覆盖主题内置规则，避免升级主题后失效。
+ *
+ * 注意：Material 的桌面断点为 76.25em（约 1220px）。
+ * 断点以下采用抽屉式逐层下钻导航，不应套用缩进规则。
+ * ============================================================ */
+
+@media screen and (min-width: 76.25em) {
+
+  /* ----------------------------------------------------------
+   * 1. 取消主题对「分组子导航」的反缩进
+   *    选择器特意写得比主题内置规则更具体，保证 extra_css 生效
+   * ---------------------------------------------------------- */
+  [dir=ltr] .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav:not(.md-nav--secondary),
+  [dir=ltr] .md-sidebar--primary .md-nav--lifted > .md-nav__list > .md-nav__item > .md-nav:not(.md-nav--secondary) {
+    margin-left: 0;
+    margin-inline-start: 0.9rem;
+  }
+
+  /* RTL 布局保持方向无关 */
+  [dir=rtl] .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav:not(.md-nav--secondary) {
+    margin-right: 0;
+    margin-inline-start: 0.9rem;
+  }
+
+  /* ----------------------------------------------------------
+   * 2. 二级导航：左引导线 + 递增缩进
+   *    nav 元素带 data-md-level 属性，层级变化时无需改 CSS
+   * ---------------------------------------------------------- */
+  .md-sidebar--primary .md-nav--primary .md-nav[data-md-level="1"] {
+    border-inline-start: 0.05rem solid var(--md-default-fg-color--lightest);
+    padding-inline-start: 0.25rem;
+  }
+
+  .md-sidebar--primary .md-nav--primary .md-nav[data-md-level="1"] > .md-nav__list > .md-nav__item > .md-nav__link {
+    padding-left: 0.5rem;
+    font-size: 0.78rem;
+  }
+
+  /* ----------------------------------------------------------
+   * 3. 三级及更深层级（预留给以后继续细分 nav）
+   * ---------------------------------------------------------- */
+  .md-sidebar--primary .md-nav--primary .md-nav[data-md-level="2"] {
+    margin-inline-start: 0.9rem;
+    border-inline-start: 0.05rem solid var(--md-default-fg-color--lightest);
+    padding-inline-start: 0.2rem;
+  }
+
+  .md-sidebar--primary .md-nav--primary .md-nav[data-md-level="2"] > .md-nav__list > .md-nav__item > .md-nav__link,
+  .md-sidebar--primary .md-nav--primary .md-nav[data-md-level="3"] > .md-nav__list > .md-nav__item > .md-nav__link {
+    padding-left: 0.45rem;
+    font-size: 0.76rem;
+  }
+
+  /* ----------------------------------------------------------
+   * 4. 强化分组标题与当前页的视觉区分
+   *    Material 默认把分组标题做成小号浅灰字，视觉上比子页面还弱；
+   *    这里改为深色加粗，形成「父级重、子级轻」的树形层级
+   * ---------------------------------------------------------- */
+  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link[for],
+  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link[for] {
+    color: var(--md-default-fg-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link,
+  .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .md-sidebar--primary .md-nav--primary .md-nav__item--section {
+    margin: 0.9em 0;
+  }
+
+  /* 当前页面在同级中加粗高亮（选择器需覆盖上面的层级规则） */
+  .md-sidebar--primary .md-nav--primary .md-nav[data-md-level="1"] > .md-nav__list > .md-nav__item > .md-nav__link--active,
+  .md-sidebar--primary .md-nav__link--active {
+    font-weight: 700;
+  }
+}
+
+/* ------------------------------------------------------------
+ * 5. 站点通用微调（不受断点限制）
+ * ------------------------------------------------------------ */
+
+/* 表格在窄屏下允许横向滚动，避免中文长表格撑破版面 */
+.md-typeset table:not([class]) {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* 首页分组卡片之间的间距 */
+.md-typeset h2 {
+  margin-top: 1.6rem;
+}

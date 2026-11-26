@@ -1,0 +1,4138 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人技术知识库，记录 C#、.NET、Avalonia、PLC、Oracle 等技术文档">
+      
+      
+        <meta name="author" content="zhangyq">
+      
+      
+        <link rel="canonical" href="https://aquncode.github.io/MyWiki/Avalonia/SukiUI/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../MVVM/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
+    
+    
+      
+        <title>SukiUI - MyWiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sukiui" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="MyWiki" class="md-header__button md-logo" aria-label="MyWiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MyWiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SukiUI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MyWiki" class="md-nav__button md-logo" aria-label="MyWiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
+
+    </a>
+    MyWiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C# / .NET
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C# / .NET
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSharp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C# 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSharp/LINQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LINQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSharp/Async/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    异步编程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSharp/Reflection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    反射
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CSharp/Performance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    性能优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avalonia
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Avalonia
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Avalonia 首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SukiUI
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SukiUI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      本页目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#avalonia-ui-net-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面向 Avalonia UI / .NET 8 桌面应用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-sukiui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. SukiUI 是什么
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. SukiUI 是什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-sukiui-avalonia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 SukiUI 与 Avalonia 的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 推荐使用场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 版本选择与安装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 版本选择与安装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 版本兼容要点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-sukiui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 安装 SukiUI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-fluent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Fluent 主题是否需要保留
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-appaxaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. App.axaml 全局配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. App.axaml 全局配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-sukitheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 注册 SukiTheme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 设置中文本地化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-appaxaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 建议 App.axaml 的资源组织
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sukiwindow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. SukiWindow 主窗口
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. SukiWindow 主窗口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-sukiwindow-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 用 SukiWindow 替代 Window
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 窗口背景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 什么时候仍使用普通 Window
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 主题、颜色与明暗模式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 主题、颜色与明暗模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 主题组成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 主题切换的原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 语义化业务颜色
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 常用控件样式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 常用控件样式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-glasscard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 GlassCard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-infobar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 InfoBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-infobadge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 InfoBadge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 输入控件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 布局与导航
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 布局与导航">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-avalonia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 基础布局仍使用 Avalonia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-sukisidemenu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 SukiSideMenu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-transitioningcontentcontrol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 TransitioningContentControl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-settingslayout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 SettingsLayout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 对话框、消息框与 Host
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 对话框、消息框与 Host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Host 概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-toast-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 窗口中配置 Toast Host
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-messagebox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 MessageBox 的使用建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-toast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Toast 通知
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Toast 通知">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-viewmodel-toastmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 ViewModel 管理 ToastManager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-toast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Toast 的常见能力
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-mvvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. MVVM 集成建议
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. MVVM 集成建议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 视图只负责展示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 命令示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-datagrid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. DataGrid 与可选组件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. DataGrid 与可选组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-datagrid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 DataGrid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-colorpicker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 ColorPicker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-conditionalxaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 ConditionalXAML
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 自定义样式与资源
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 自定义样式与资源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 优先使用 Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 自定义 Style
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 图标
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. 性能、跨平台与发布
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. 性能、跨平台与发布">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 动画与背景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 跨平台
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 发布
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. 常见问题排查
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. 常见问题排查">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-sukitheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 SukiTheme 找不到
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-sukiwindow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 SukiWindow 找不到
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 窗口/控件透明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-missingmethodexception" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 主题控件显示异常或 MissingMethodException
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#145-datagrid-sukiui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5 DataGrid 没有 SukiUI 样式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#146-toast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6 Toast 不显示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#147" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7 中文显示为问号或字体异常
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. 官方资料与源码索引
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录 A：最小可运行集成检查表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关页面
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MVVM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MVVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DataBinding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据绑定
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CustomControls/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自定义控件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    页面导航
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PLC / 工业控制
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PLC / 工业控制
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PLC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PLC 首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PLC/Modbus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modbus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PLC/Siemens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    西门子 PLC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PLC/SerialPort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    串口通信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PLC/DataAcquisition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据采集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据库
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/Oracle19c/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Oracle 19c
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/MySQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MySQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/SQLite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/SqlSugar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SqlSugar
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Database/EFCore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EF Core
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DevOps
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DevOps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps 首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DevOps/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DevOps/Docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DevOps/Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DevOps/KylinV11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kylin V11
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工具
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工具首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/VisualStudio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual Studio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/PowerShell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PowerShell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/MkDocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="本页目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      本页目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#avalonia-ui-net-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        面向 Avalonia UI / .NET 8 桌面应用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-sukiui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. SukiUI 是什么
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. SukiUI 是什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-sukiui-avalonia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 SukiUI 与 Avalonia 的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 推荐使用场景
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 版本选择与安装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 版本选择与安装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 版本兼容要点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-sukiui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 安装 SukiUI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-fluent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Fluent 主题是否需要保留
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-appaxaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. App.axaml 全局配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. App.axaml 全局配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-sukitheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 注册 SukiTheme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 设置中文本地化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-appaxaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 建议 App.axaml 的资源组织
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-sukiwindow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. SukiWindow 主窗口
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. SukiWindow 主窗口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-sukiwindow-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 用 SukiWindow 替代 Window
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 窗口背景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 什么时候仍使用普通 Window
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 主题、颜色与明暗模式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 主题、颜色与明暗模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 主题组成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 主题切换的原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 语义化业务颜色
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 常用控件样式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 常用控件样式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Button
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-glasscard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 GlassCard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-infobar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 InfoBar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-infobadge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 InfoBadge
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 输入控件
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 布局与导航
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 布局与导航">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-avalonia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 基础布局仍使用 Avalonia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-sukisidemenu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 SukiSideMenu
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-transitioningcontentcontrol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 TransitioningContentControl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-settingslayout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 SettingsLayout
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 对话框、消息框与 Host
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 对话框、消息框与 Host">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Host 概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-toast-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 窗口中配置 Toast Host
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-messagebox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 MessageBox 的使用建议
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-toast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Toast 通知
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Toast 通知">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-viewmodel-toastmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 ViewModel 管理 ToastManager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-toast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Toast 的常见能力
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-mvvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. MVVM 集成建议
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. MVVM 集成建议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 视图只负责展示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 命令示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-datagrid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. DataGrid 与可选组件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. DataGrid 与可选组件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-datagrid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 DataGrid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-colorpicker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 ColorPicker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-conditionalxaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 ConditionalXAML
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 自定义样式与资源
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 自定义样式与资源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 优先使用 Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 自定义 Style
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.3 图标
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. 性能、跨平台与发布
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. 性能、跨平台与发布">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.1 动画与背景
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.2 跨平台
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13.3 发布
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. 常见问题排查
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="14. 常见问题排查">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-sukitheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.1 SukiTheme 找不到
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-sukiwindow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.2 SukiWindow 找不到
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.3 窗口/控件透明
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#144-missingmethodexception" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.4 主题控件显示异常或 MissingMethodException
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#145-datagrid-sukiui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.5 DataGrid 没有 SukiUI 样式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#146-toast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.6 Toast 不显示
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#147" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14.7 中文显示为问号或字体异常
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. 官方资料与源码索引
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录 A：最小可运行集成检查表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        相关页面
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><a id="sukiui-中文离线开发手册"></a></p>
+<h1 id="sukiui">SukiUI 中文离线开发手册<a class="headerlink" href="#sukiui" title="Permanent link">&para;</a></h1>
+<p><a id="面向-avalonia-ui-net-8-桌面应用"></a></p>
+<h2 id="avalonia-ui-net-8">面向 Avalonia UI / .NET 8 桌面应用<a class="headerlink" href="#avalonia-ui-net-8" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>文档信息</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分类</td>
+<td>Avalonia</td>
+</tr>
+<tr>
+<td>主题</td>
+<td>SukiUI 中文离线开发手册（控件、主题、Host、MVVM 集成）</td>
+</tr>
+<tr>
+<td>适用技术栈</td>
+<td>.NET 8 / Avalonia 11 / SukiUI 6.x</td>
+</tr>
+<tr>
+<td>关联分组</td>
+<td><a href="../">Avalonia 首页</a> · <a href="../../PLC/">PLC / 工业控制</a> · <a href="../../DevOps/">DevOps</a></td>
+</tr>
+<tr>
+<td>更新日期</td>
+<td>2026-11-26</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>本页由 <code>mkdocs.yml</code> 的 <code>nav → Avalonia → SukiUI</code> 指向；同组其他页面见文末「相关页面」。</p>
+</blockquote>
+<p><strong>版本说明：</strong> 本手册以 SukiUI 6.x API 为主要讲解对象，并按 Avalonia 11 系列项目组织示例。针对 Avalonia 11.3.9 项目，建议先采用 SukiUI 6.0.3 作为参考版本；安装前仍需检查 NuGet 依赖解析结果。SukiUI 6.1.1 要求 Avalonia 组件至少 11.3.14，SukiUI 7.0.1 则面向 Avalonia 12，不能直接与 Avalonia 11.3.9 混用。</p>
+<blockquote>
+<p>本文是整理后的离线开发指南，不是官方文档逐字翻译，也不保证覆盖 SukiUI 全部 API。控件具体属性以项目实际引用版本的 XML 注释、Demo 源码和 NuGet 依赖为准。</p>
+</blockquote>
+<hr />
+<p><a id="目录"></a></p>
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#1-sukiui-是什么">1. SukiUI 是什么</a></li>
+<li><a href="#11-sukiui-与-avalonia-的关系">1.1 SukiUI 与 Avalonia 的关系</a></li>
+<li><a href="#12-推荐使用场景">1.2 推荐使用场景</a></li>
+<li><a href="#2-版本选择与安装">2. 版本选择与安装</a></li>
+<li><a href="#21-版本兼容要点">2.1 版本兼容要点</a></li>
+<li><a href="#22-安装-sukiui">2.2 安装 SukiUI</a></li>
+<li><a href="#23-fluent-主题是否需要保留">2.3 Fluent 主题是否需要保留</a></li>
+<li><a href="#3-appaxaml-全局配置">3. App.axaml 全局配置</a></li>
+<li><a href="#31-注册-sukitheme">3.1 注册 SukiTheme</a></li>
+<li><a href="#32-设置中文本地化">3.2 设置中文本地化</a></li>
+<li><a href="#33-建议-appaxaml-的资源组织">3.3 建议 App.axaml 的资源组织</a></li>
+<li><a href="#4-sukiwindow-主窗口">4. SukiWindow 主窗口</a></li>
+<li><a href="#41-用-sukiwindow-替代-window">4.1 用 SukiWindow 替代 Window</a></li>
+<li><a href="#42-窗口背景">4.2 窗口背景</a></li>
+<li><a href="#43-什么时候仍使用普通-window">4.3 什么时候仍使用普通 Window</a></li>
+<li><a href="#5-主题颜色与明暗模式">5. 主题、颜色与明暗模式</a></li>
+<li><a href="#51-主题组成">5.1 主题组成</a></li>
+<li><a href="#52-主题切换的原则">5.2 主题切换的原则</a></li>
+<li><a href="#53-语义化业务颜色">5.3 语义化业务颜色</a></li>
+<li><a href="#6-常用控件样式">6. 常用控件样式</a></li>
+<li><a href="#61-button">6.1 Button</a></li>
+<li><a href="#62-glasscard">6.2 GlassCard</a></li>
+<li><a href="#63-infobar">6.3 InfoBar</a></li>
+<li><a href="#64-infobadge">6.4 InfoBadge</a></li>
+<li><a href="#65-输入控件">6.5 输入控件</a></li>
+<li><a href="#7-布局与导航">7. 布局与导航</a></li>
+<li><a href="#71-基础布局仍使用-avalonia">7.1 基础布局仍使用 Avalonia</a></li>
+<li><a href="#72-sukisidemenu">7.2 SukiSideMenu</a></li>
+<li><a href="#73-transitioningcontentcontrol">7.3 TransitioningContentControl</a></li>
+<li><a href="#74-settingslayout">7.4 SettingsLayout</a></li>
+<li><a href="#8-对话框消息框与-host">8. 对话框、消息框与 Host</a></li>
+<li><a href="#81-host-概念">8.1 Host 概念</a></li>
+<li><a href="#82-窗口中配置-toast-host">8.2 窗口中配置 Toast Host</a></li>
+<li><a href="#83-messagebox-的使用建议">8.3 MessageBox 的使用建议</a></li>
+<li><a href="#9-toast-通知">9. Toast 通知</a></li>
+<li><a href="#91-viewmodel-管理-toastmanager">9.1 ViewModel 管理 ToastManager</a></li>
+<li><a href="#92-toast-的常见能力">9.2 Toast 的常见能力</a></li>
+<li><a href="#10-mvvm-集成建议">10. MVVM 集成建议</a></li>
+<li><a href="#101-视图只负责展示">10.1 视图只负责展示</a></li>
+<li><a href="#102-命令示例">10.2 命令示例</a></li>
+<li><a href="#11-datagrid-与可选组件">11. DataGrid 与可选组件</a></li>
+<li><a href="#111-datagrid">11.1 DataGrid</a></li>
+<li><a href="#112-colorpicker">11.2 ColorPicker</a></li>
+<li><a href="#113-conditionalxaml">11.3 ConditionalXAML</a></li>
+<li><a href="#12-自定义样式与资源">12. 自定义样式与资源</a></li>
+<li><a href="#121-优先使用-classes">12.1 优先使用 Classes</a></li>
+<li><a href="#122-自定义-style">12.2 自定义 Style</a></li>
+<li><a href="#123-图标">12.3 图标</a></li>
+<li><a href="#13-性能跨平台与发布">13. 性能、跨平台与发布</a></li>
+<li><a href="#131-动画与背景">13.1 动画与背景</a></li>
+<li><a href="#132-跨平台">13.2 跨平台</a></li>
+<li><a href="#133-发布">13.3 发布</a></li>
+<li><a href="#14-常见问题排查">14. 常见问题排查</a></li>
+<li><a href="#141-sukitheme-找不到">14.1 SukiTheme 找不到</a></li>
+<li><a href="#142-sukiwindow-找不到">14.2 SukiWindow 找不到</a></li>
+<li><a href="#143-窗口控件透明">14.3 窗口/控件透明</a></li>
+<li><a href="#144-主题控件显示异常或-missingmethodexception">14.4 主题控件显示异常或 MissingMethodException</a></li>
+<li><a href="#145-datagrid-没有-sukiui-样式">14.5 DataGrid 没有 SukiUI 样式</a></li>
+<li><a href="#146-toast-不显示">14.6 Toast 不显示</a></li>
+<li><a href="#147-中文显示为问号或字体异常">14.7 中文显示为问号或字体异常</a></li>
+<li><a href="#15-官方资料与源码索引">15. 官方资料与源码索引</a></li>
+<li><a href="#附录-a最小可运行集成检查表">附录 A：最小可运行集成检查表</a></li>
+</ul>
+<p><a id="1-sukiui-是什么"></a></p>
+<h2 id="1-sukiui">1. SukiUI 是什么<a class="headerlink" href="#1-sukiui" title="Permanent link">&para;</a></h2>
+<p>SukiUI 是基于 Avalonia 的桌面 UI 主题和控件工具包。它提供统一的视觉风格、主题色、浅色/深色模式、窗口外观、动画控件、通知、对话框和若干布局控件。</p>
+<p><a id="11-sukiui-与-avalonia-的关系"></a></p>
+<h3 id="11-sukiui-avalonia">1.1 SukiUI 与 Avalonia 的关系<a class="headerlink" href="#11-sukiui-avalonia" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Avalonia</strong>：跨平台 UI 框架，提供 Window、Grid、Button、TextBox、Binding、Command 等基础能力。</li>
+<li><strong>SukiUI</strong>：在 Avalonia 基础上提供主题、控件样式、窗口外壳和附加交互。</li>
+<li><strong>CommunityToolkit.Mvvm</strong>：可继续负责 ViewModel、ObservableProperty、RelayCommand 等 MVVM 基础设施；SukiUI 不替代 MVVM 框架。</li>
+<li><strong>业务控件</strong>：PLC 状态、实时曲线、设备卡片等仍建议由项目自行封装，SukiUI 主要负责统一视觉与交互。</li>
+</ul>
+<p>SukiUI 官方项目定位为桌面 UI，不应把它视为移动端 UI 框架。</p>
+<p><a id="12-推荐使用场景"></a></p>
+<h3 id="12">1.2 推荐使用场景<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<ul>
+<li>工业上位机、设备监控、生产管理客户端</li>
+<li>管理类桌面软件、设置页、仪表盘</li>
+<li>需要统一主题、暗色模式和现代化窗口外观的 Avalonia 应用</li>
+</ul>
+<hr />
+<p><a id="2-版本选择与安装"></a></p>
+<h2 id="2">2. 版本选择与安装<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p><a id="21-版本兼容要点"></a></p>
+<h3 id="21">2.1 版本兼容要点<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>截至本手册整理时，官方稳定版本线包括 SukiUI 6.x 和 7.x。主要兼容关系：</p>
+<table>
+<thead>
+<tr>
+<th>SukiUI 版本</th>
+<th>Avalonia 依赖</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6.0.3</td>
+<td>Avalonia 11.3.4 及以上</td>
+<td>可作为 Avalonia 11.3.9 项目的参考版本</td>
+</tr>
+<tr>
+<td>6.1.1</td>
+<td>Avalonia 11.3.14 及以上</td>
+<td>安装时 NuGet 可能升级 Avalonia 相关包</td>
+</tr>
+<tr>
+<td>7.0.1</td>
+<td>Avalonia 12.0.3 及以上</td>
+<td>Avalonia 12 版本线</td>
+</tr>
+</tbody>
+</table>
+<p><strong>重要：</strong> 不要只看 <code>SukiUI</code> 一个包的版本。Avalonia 的 <code>Avalonia</code>、<code>Avalonia.Skia</code>、<code>Avalonia.Themes.Simple</code>、DataGrid、ColorPicker 等依赖应保持在兼容版本组内。升级前先在 Git 分支或备份项目中操作。</p>
+<p><a id="22-安装-sukiui"></a></p>
+<h3 id="22-sukiui">2.2 安装 SukiUI<a class="headerlink" href="#22-sukiui" title="Permanent link">&para;</a></h3>
+<p>在项目目录打开终端：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>dotnet<span class="w"> </span>add<span class="w"> </span>package<span class="w"> </span>SukiUI<span class="w"> </span>--version<span class="w"> </span><span class="m">6</span>.0.3
+</span></code></pre></div></td></tr></table></div>
+<p>也可以在 <code>.csproj</code> 中添加：</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nt">&lt;ItemGroup&gt;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="nt">&lt;PackageReference</span><span class="w"> </span><span class="na">Include=</span><span class="s">"SukiUI"</span><span class="w"> </span><span class="na">Version=</span><span class="s">"6.0.3"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nt">&lt;/ItemGroup&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>检查依赖：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>dotnet<span class="w"> </span>list<span class="w"> </span>package
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>dotnet<span class="w"> </span>restore
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>dotnet<span class="w"> </span>build
+</span></code></pre></div></td></tr></table></div>
+<p>如果使用中央包管理 <code>Directory.Packages.props</code>，在集中版本文件中声明版本，并在项目文件中只保留不带版本的 <code>PackageReference</code>。</p>
+<p><a id="23-fluent-主题是否需要保留"></a></p>
+<h3 id="23-fluent">2.3 Fluent 主题是否需要保留<a class="headerlink" href="#23-fluent" title="Permanent link">&para;</a></h3>
+<p>SukiUI 自带主题入口。官方安装说明建议在使用 SukiTheme 时移除默认模板中的 <code>Avalonia.Themes.Fluent</code>，避免同时加载两套主题造成样式冲突。若项目有特殊 Fluent 资源依赖，先逐项验证再移除。</p>
+<hr />
+<p><a id="3-appaxaml-全局配置"></a></p>
+<h2 id="3-appaxaml">3. App.axaml 全局配置<a class="headerlink" href="#3-appaxaml" title="Permanent link">&para;</a></h2>
+<p><a id="31-注册-sukitheme"></a></p>
+<h3 id="31-sukitheme">3.1 注册 SukiTheme<a class="headerlink" href="#31-sukitheme" title="Permanent link">&para;</a></h3>
+<p>在 <code>App.axaml</code> 中添加命名空间并注册主题：</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="nt">&lt;Application</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="na">x:Class=</span><span class="s">"YourApp.App"</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="na">xmlns=</span><span class="s">"https://github.com/avaloniaui"</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="na">xmlns:suki=</span><span class="s">"clr-namespace:SukiUI;assembly=SukiUI"</span><span class="nt">&gt;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">  </span><span class="nt">&lt;Application.Styles&gt;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">    </span><span class="nt">&lt;suki:SukiTheme</span><span class="w"> </span><span class="na">ThemeColor=</span><span class="s">"Blue"</span><span class="w"> </span><span class="na">Locale=</span><span class="s">"zh-CN"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">  </span><span class="nt">&lt;/Application.Styles&gt;</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="nt">&lt;/Application&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>常见主题色名称包括 <code>Blue</code>、<code>Purple</code>、<code>Red</code>、<code>Green</code> 等；请以当前版本 <code>SukiTheme.ThemeColor</code> 的枚举/属性提示为准。</p>
+<p><strong>注意：</strong> 官方启动文档提示，未设置主题色时，部分窗口或控件可能呈现透明效果。初次集成时建议明确设置 <code>ThemeColor</code>。</p>
+<p><a id="32-设置中文本地化"></a></p>
+<h3 id="32">3.2 设置中文本地化<a class="headerlink" href="#32" title="Permanent link">&para;</a></h3>
+<p><code>Locale="zh-CN"</code> 用于 SukiUI/Avalonia 某些内置文本的本地化，例如部分默认上下文菜单。它并不会自动翻译你的业务界面。业务标题、按钮、菜单仍应使用资源文件或项目自己的本地化方案。</p>
+<p><a id="33-建议-appaxaml-的资源组织"></a></p>
+<h3 id="33-appaxaml">3.3 建议 App.axaml 的资源组织<a class="headerlink" href="#33-appaxaml" title="Permanent link">&para;</a></h3>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span>
+<span class="normal"><a href="#__codelineno-4-7">7</a></span>
+<span class="normal"><a href="#__codelineno-4-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nt">&lt;Application.Resources&gt;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span><span class="nt">&lt;ResourceDictionary&gt;</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="nt">&lt;ResourceDictionary.MergedDictionaries&gt;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">      </span><span class="nt">&lt;ResourceInclude</span><span class="w"> </span><span class="na">Source=</span><span class="s">"avares://YourApp/Styles/Colors.axaml"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">      </span><span class="nt">&lt;ResourceInclude</span><span class="w"> </span><span class="na">Source=</span><span class="s">"avares://YourApp/Styles/Brushes.axaml"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="nt">&lt;/ResourceDictionary.MergedDictionaries&gt;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">  </span><span class="nt">&lt;/ResourceDictionary&gt;</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="nt">&lt;/Application.Resources&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>项目资源文件可按 <code>Styles/Colors.axaml</code>、<code>Styles/Brushes.axaml</code>、<code>Styles/Controls.axaml</code> 分层。不要把大量业务控件样式全部堆到 <code>App.axaml</code>。</p>
+<hr />
+<p><a id="4-sukiwindow-主窗口"></a></p>
+<h2 id="4-sukiwindow">4. SukiWindow 主窗口<a class="headerlink" href="#4-sukiwindow" title="Permanent link">&para;</a></h2>
+<p><a id="41-用-sukiwindow-替代-window"></a></p>
+<h3 id="41-sukiwindow-window">4.1 用 SukiWindow 替代 Window<a class="headerlink" href="#41-sukiwindow-window" title="Permanent link">&para;</a></h3>
+<p>SukiUI 的 <code>SukiWindow</code> 是其应用窗口外壳。简单应用可以直接从它开始。</p>
+<p><code>MainWindow.axaml</code>：</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nt">&lt;suki:SukiWindow</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="na">x:Class=</span><span class="s">"YourApp.MainWindow"</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="na">xmlns=</span><span class="s">"https://github.com/avaloniaui"</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">    </span><span class="na">xmlns:suki=</span><span class="s">"clr-namespace:SukiUI.Controls;assembly=SukiUI"</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">    </span><span class="na">Title=</span><span class="s">"设备管理系统"</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="na">Width=</span><span class="s">"1280"</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">    </span><span class="na">Height=</span><span class="s">"800"</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="na">BackgroundStyle=</span><span class="s">"Flat"</span><span class="nt">&gt;</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">  </span><span class="nt">&lt;Grid</span><span class="w"> </span><span class="na">RowDefinitions=</span><span class="s">"Auto,*"</span><span class="nt">&gt;</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">    </span><span class="nt">&lt;TextBlock</span><span class="w"> </span><span class="na">Text=</span><span class="s">"系统首页"</span><span class="w"> </span><span class="na">FontSize=</span><span class="s">"24"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="w">    </span><span class="nt">&lt;ContentControl</span><span class="w"> </span><span class="na">Grid.Row=</span><span class="s">"1"</span><span class="w"> </span><span class="na">Content=</span><span class="s">"{Binding CurrentView}"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="w">  </span><span class="nt">&lt;/Grid&gt;</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="nt">&lt;/suki:SukiWindow&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><code>MainWindow.axaml.cs</code>：</p>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">SukiUI.Controls</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="k">namespace</span><span class="w"> </span><span class="nn">YourApp</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="k">public</span><span class="w"> </span><span class="k">partial</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MainWindow</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">SukiWindow</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">MainWindow</span><span class="p">()</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">        </span><span class="n">InitializeComponent</span><span class="p">();</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p><a id="42-窗口背景"></a></p>
+<h3 id="42">4.2 窗口背景<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<p>常见 <code>BackgroundStyle</code>：</p>
+<ul>
+<li><code>Bubble</code>：带气泡/玻璃质感的背景。</li>
+<li><code>Gradient</code>：渐变背景。</li>
+<li><code>Flat</code>：平面背景，视觉干净，通常更适合工业软件和高密度数据界面。</li>
+</ul>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nt">&lt;suki:SukiWindow</span><span class="w"> </span><span class="na">BackgroundStyle=</span><span class="s">"Flat"</span><span class="nt">&gt;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">  </span><span class="cm">&lt;!-- 页面内容 --&gt;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nt">&lt;/suki:SukiWindow&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>窗口还支持 Logo、菜单区域、标题栏右侧控件等扩展区域。属性/附加属性请以当前 SukiWindow 的 IntelliSense 和 Demo 为准。</p>
+<p><a id="43-什么时候仍使用普通-window"></a></p>
+<h3 id="43-window">4.3 什么时候仍使用普通 Window<a class="headerlink" href="#43-window" title="Permanent link">&para;</a></h3>
+<ul>
+<li>独立工具窗、辅助窗或需要完全自定义外观的窗口</li>
+<li>业务窗口不需要 SukiWindow 的标题栏和背景能力</li>
+<li>项目需要兼容已有 Window 生命周期/自定义窗体逻辑</li>
+</ul>
+<p>可以让主窗体使用 SukiWindow，子窗体按需求选择 Window 或 SukiWindow，避免为了统一而强制改造所有窗口。</p>
+<hr />
+<p><a id="5-主题颜色与明暗模式"></a></p>
+<h2 id="5">5. 主题、颜色与明暗模式<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>SukiUI 的主题系统负责全局颜色和控件状态。建议把主题切换放到一个统一服务或 ViewModel 中，避免多个页面各自修改全局主题。</p>
+<p><a id="51-主题组成"></a></p>
+<h3 id="51">5.1 主题组成<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>ThemeColor</strong>：主主题色，影响按钮、选中状态等强调色。</li>
+<li><strong>Light/Dark</strong>：浅色与深色外观。</li>
+<li><strong>BackgroundStyle</strong>：窗口背景风格。</li>
+<li><strong>自定义资源</strong>：业务颜色、状态颜色、图表颜色。</li>
+</ul>
+<p><a id="52-主题切换的原则"></a></p>
+<h3 id="52">5.2 主题切换的原则<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<ol>
+<li>主题状态由应用级单例/服务管理。</li>
+<li>主题切换入口集中在设置页或标题栏。</li>
+<li>业务状态色不要直接依赖主题强调色。例如 PLC “运行/故障/待机”应使用语义化资源。</li>
+<li>主题切换后检查 DataGrid、弹窗、菜单、图表和自定义控件。</li>
+</ol>
+<p>SukiUI 不同版本的主题管理 API 可能变化。不要在未确认当前版本 API 的情况下照搬网络上的 <code>SukiTheme</code> / <code>SukiThemeManager</code> 示例。建议先通过 IDE 对当前包进行“转到定义”，或查看同版本 Demo 的主题切换实现。</p>
+<p><a id="53-语义化业务颜色"></a></p>
+<h3 id="53">5.3 语义化业务颜色<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<p>建议自行定义：</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nt">&lt;SolidColorBrush</span><span class="w"> </span><span class="na">x:Key=</span><span class="s">"StatusRunningBrush"</span><span class="w"> </span><span class="na">Color=</span><span class="s">"#2EAD66"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="nt">&lt;SolidColorBrush</span><span class="w"> </span><span class="na">x:Key=</span><span class="s">"StatusWarningBrush"</span><span class="w"> </span><span class="na">Color=</span><span class="s">"#E6A23C"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="nt">&lt;SolidColorBrush</span><span class="w"> </span><span class="na">x:Key=</span><span class="s">"StatusFaultBrush"</span><span class="w"> </span><span class="na">Color=</span><span class="s">"#E5484D"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="nt">&lt;SolidColorBrush</span><span class="w"> </span><span class="na">x:Key=</span><span class="s">"StatusOfflineBrush"</span><span class="w"> </span><span class="na">Color=</span><span class="s">"#909399"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>工业设备页面应确保颜色之外还有文字/图标/状态码，不能只靠颜色传达故障信息。</p>
+<hr />
+<p><a id="6-常用控件样式"></a></p>
+<h2 id="6">6. 常用控件样式<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>SukiUI 通常沿用 Avalonia 基础控件，并通过 <code>Classes</code> 选择不同视觉样式。样式类不是新的控件类型。</p>
+<p><a id="61-button"></a></p>
+<h3 id="61-button">6.1 Button<a class="headerlink" href="#61-button" title="Permanent link">&para;</a></h3>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span>
+<span class="normal"><a href="#__codelineno-9-6">6</a></span>
+<span class="normal"><a href="#__codelineno-9-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nt">&lt;Button</span><span class="w"> </span><span class="na">Content=</span><span class="s">"标准按钮"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="nt">&lt;Button</span><span class="w"> </span><span class="na">Content=</span><span class="s">"扁平按钮"</span><span class="w"> </span><span class="na">Classes=</span><span class="s">"Flat"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="nt">&lt;Button</span><span class="w"> </span><span class="na">Content=</span><span class="s">"圆角扁平"</span><span class="w"> </span><span class="na">Classes=</span><span class="s">"Flat Rounded"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="nt">&lt;Button</span><span class="w"> </span><span class="na">Content=</span><span class="s">"描边按钮"</span><span class="w"> </span><span class="na">Classes=</span><span class="s">"Outlined"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="nt">&lt;Button</span><span class="w"> </span><span class="na">Content=</span><span class="s">"基础按钮"</span><span class="w"> </span><span class="na">Classes=</span><span class="s">"Basic"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="nt">&lt;Button</span><span class="w"> </span><span class="na">Content=</span><span class="s">"强调按钮"</span><span class="w"> </span><span class="na">Classes=</span><span class="s">"Flat Accent"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="nt">&lt;Button</span><span class="w"> </span><span class="na">Content=</span><span class="s">"大按钮"</span><span class="w"> </span><span class="na">Classes=</span><span class="s">"Flat Large"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>使用建议：</p>
+<ul>
+<li>主操作：一个页面只保留少量 Accent 主按钮。</li>
+<li>次要操作：Flat 或 Outlined。</li>
+<li>危险操作：通过语义色、确认弹窗和明确文案表达，不要仅靠红色。</li>
+<li>加载状态：可使用 <code>ButtonExtensions.ShowProgress</code> 或当前版本提供的进度 API。</li>
+</ul>
+<p><a id="62-glasscard"></a></p>
+<h3 id="62-glasscard">6.2 GlassCard<a class="headerlink" href="#62-glasscard" title="Permanent link">&para;</a></h3>
+<p><code>GlassCard</code> 是常用卡片容器，适合仪表盘、设备卡片、状态汇总等。</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nt">&lt;suki:GlassCard&gt;</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">  </span><span class="nt">&lt;StackPanel</span><span class="w"> </span><span class="na">Spacing=</span><span class="s">"8"</span><span class="nt">&gt;</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="nt">&lt;TextBlock</span><span class="w"> </span><span class="na">Text=</span><span class="s">"设备状态"</span><span class="w"> </span><span class="na">FontSize=</span><span class="s">"18"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="nt">&lt;TextBlock</span><span class="w"> </span><span class="na">Text=</span><span class="s">"运行中"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="w">  </span><span class="nt">&lt;/StackPanel&gt;</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="nt">&lt;/suki:GlassCard&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>常见样式：</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nt">&lt;suki:GlassCard</span><span class="w"> </span><span class="na">Classes=</span><span class="s">"Primary"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/suki:GlassCard&gt;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="nt">&lt;suki:GlassCard</span><span class="w"> </span><span class="na">Classes=</span><span class="s">"Accent"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/suki:GlassCard&gt;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nt">&lt;suki:GlassCard</span><span class="w"> </span><span class="na">IsOpaque=</span><span class="s">"True"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/suki:GlassCard&gt;</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="nt">&lt;suki:GlassCard</span><span class="w"> </span><span class="na">IsInteractive=</span><span class="s">"True"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/suki:GlassCard&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><code>IsInteractive</code> 用于需要交互反馈的卡片。若卡片只是信息展示，避免添加不必要的悬停/点击动画。</p>
+<p><a id="63-infobar"></a></p>
+<h3 id="63-infobar">6.3 InfoBar<a class="headerlink" href="#63-infobar" title="Permanent link">&para;</a></h3>
+<p><code>InfoBar</code> 用于页面内持续显示提示或状态：</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span>
+<span class="normal"><a href="#__codelineno-12-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nt">&lt;suki:InfoBar</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="na">Title=</span><span class="s">"连接提示"</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">    </span><span class="na">Message=</span><span class="s">"PLC 连接已恢复"</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">    </span><span class="na">Severity=</span><span class="s">"Success"</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">    </span><span class="na">IsOpen=</span><span class="s">"{Binding IsInfoOpen}"</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">    </span><span class="na">IsClosable=</span><span class="s">"True"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>常见 Severity：<code>Information</code>、<code>Success</code>、<code>Warning</code>、<code>Error</code>。适合显示连接状态、配置校验、操作结果等；短暂操作反馈更适合 Toast。</p>
+<p><a id="64-infobadge"></a></p>
+<h3 id="64-infobadge">6.4 InfoBadge<a class="headerlink" href="#64-infobadge" title="Permanent link">&para;</a></h3>
+<p><code>InfoBadge</code> 适合菜单角标、未读数量或异常计数。计数为 0 时是否隐藏应由 ViewModel 或样式逻辑明确控制。</p>
+<p><a id="65-输入控件"></a></p>
+<h3 id="65">6.5 输入控件<a class="headerlink" href="#65" title="Permanent link">&para;</a></h3>
+<p>TextBox、ComboBox、CheckBox、RadioButton、ToggleSwitch、NumericUpDown 等仍采用 Avalonia 的绑定和命令模式，SukiUI 提供统一样式。</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">7</a></span>
+<span class="normal"><a href="#__codelineno-13-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nt">&lt;TextBox</span><span class="w"> </span><span class="na">Watermark=</span><span class="s">"请输入设备编号"</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">         </span><span class="na">Text=</span><span class="s">"{Binding DeviceNo, Mode=TwoWay}"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="nt">&lt;ComboBox</span><span class="w"> </span><span class="na">ItemsSource=</span><span class="s">"{Binding DeviceTypes}"</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">          </span><span class="na">SelectedItem=</span><span class="s">"{Binding SelectedDeviceType}"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="nt">&lt;CheckBox</span><span class="w"> </span><span class="na">Content=</span><span class="s">"启用自动采集"</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">          </span><span class="na">IsChecked=</span><span class="s">"{Binding IsAutoCollect}"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>优先使用 <code>Watermark</code> 提示输入格式，校验错误应在控件附近显示，避免只弹窗。</p>
+<hr />
+<p><a id="7-布局与导航"></a></p>
+<h2 id="7">7. 布局与导航<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p><a id="71-基础布局仍使用-avalonia"></a></p>
+<h3 id="71-avalonia">7.1 基础布局仍使用 Avalonia<a class="headerlink" href="#71-avalonia" title="Permanent link">&para;</a></h3>
+<p>SukiUI 不要求所有布局都换成专属控件。常用布局继续使用：</p>
+<ul>
+<li><code>Grid</code>：主页面、表单、复杂区域布局。</li>
+<li><code>DockPanel</code>：工具栏/状态栏布局。</li>
+<li><code>StackPanel</code>：小规模纵向/横向排列。</li>
+<li><code>WrapPanel</code>：可换行卡片。</li>
+<li><code>ScrollViewer</code>：可滚动内容。</li>
+</ul>
+<p>实时数据/PLC 状态卡片建议使用 <code>Grid</code> 明确行列，不要用嵌套过深的 StackPanel 造成测量开销。</p>
+<p><a id="72-sukisidemenu"></a></p>
+<h3 id="72-sukisidemenu">7.2 SukiSideMenu<a class="headerlink" href="#72-sukisidemenu" title="Permanent link">&para;</a></h3>
+<p><code>SukiSideMenu</code> 用于侧边导航。典型用途是设备监控、生产管理、系统设置等主模块导航。</p>
+<p>设计建议：</p>
+<ul>
+<li>菜单项与页面路由分离。</li>
+<li>菜单选择后更新 <code>CurrentView</code> 或路由状态。</li>
+<li>页面切换不应重新创建数据库连接或 PLC 连接服务。</li>
+<li>菜单图标使用统一的 Icon 控件/PathIcon 方案。</li>
+<li>根据窗口宽度调整菜单展开/收起，避免小屏下内容区域过窄。</li>
+</ul>
+<p>具体 Items、模板、命令参数等 API 请按当前版本 Demo 的 <code>SukiSideMenu</code> 示例实现；官方控件文档部分属性较少，建议结合源码确认。</p>
+<p><a id="73-transitioningcontentcontrol"></a></p>
+<h3 id="73-transitioningcontentcontrol">7.3 TransitioningContentControl<a class="headerlink" href="#73-transitioningcontentcontrol" title="Permanent link">&para;</a></h3>
+<p>用于内容切换时添加过渡效果。适合页面切换、分步向导或设置页内容变化。</p>
+<p>注意：
+- 页面切换频率高时，动画应适度。
+- 不要把动画控件用于每帧刷新内容。
+- ViewModel 生命周期应由应用导航层控制，而不是依赖动画控件的视觉附加/移除事件。</p>
+<p><a id="74-settingslayout"></a></p>
+<h3 id="74-settingslayout">7.4 SettingsLayout<a class="headerlink" href="#74-settingslayout" title="Permanent link">&para;</a></h3>
+<p><code>SettingsLayout</code> 可根据窗口宽度调整设置项布局，适合主题设置、通信参数、用户偏好等页面。</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nt">&lt;suki:SettingsLayout&gt;</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">  </span><span class="nt">&lt;suki:SettingsLayout.Items&gt;</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">    </span><span class="nt">&lt;ObservableCollection</span><span class="w"> </span><span class="na">x:TypeArguments=</span><span class="s">"suki:SettingsLayoutItem"</span><span class="nt">&gt;</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">      </span><span class="nt">&lt;suki:SettingsLayoutItem</span><span class="w"> </span><span class="na">Header=</span><span class="s">"通信设置"</span><span class="nt">&gt;</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">        </span><span class="nt">&lt;suki:SettingsLayoutItem.Content&gt;</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">          </span><span class="nt">&lt;Border</span><span class="w"> </span><span class="na">Padding=</span><span class="s">"16"</span><span class="nt">&gt;</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">            </span><span class="nt">&lt;TextBlock</span><span class="w"> </span><span class="na">Text=</span><span class="s">"通信参数内容"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">          </span><span class="nt">&lt;/Border&gt;</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="w">        </span><span class="nt">&lt;/suki:SettingsLayoutItem.Content&gt;</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="w">      </span><span class="nt">&lt;/suki:SettingsLayoutItem&gt;</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="w">    </span><span class="nt">&lt;/ObservableCollection&gt;</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="w">  </span><span class="nt">&lt;/suki:SettingsLayout.Items&gt;</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="nt">&lt;/suki:SettingsLayout&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>若 XAML 对泛型集合的写法在当前 Avalonia/SukiUI 版本中无法解析，可在 ViewModel 中构造 <code>ObservableCollection&lt;SettingsLayoutItem&gt;</code> 并绑定。</p>
+<hr />
+<p><a id="8-对话框消息框与-host"></a></p>
+<h2 id="8-host">8. 对话框、消息框与 Host<a class="headerlink" href="#8-host" title="Permanent link">&para;</a></h2>
+<p>SukiUI 的 Host 模式允许把 Toast、Dialog 等交互承载在窗口或局部页面中。Host 通常放在窗口的 Hosts 区域。</p>
+<p><a id="81-host-概念"></a></p>
+<h3 id="81-host">8.1 Host 概念<a class="headerlink" href="#81-host" title="Permanent link">&para;</a></h3>
+<p>Host 是一个“显示容器”，Manager 是对应的管理器。采用 MVVM 时，ViewModel 持有 Manager，View 负责把 Manager 绑定给 Host。</p>
+<p>常见 Host：
+- <code>SukiToastHost</code>：显示 Toast。
+- <code>SukiDialogHost</code> / <code>SukiMessageBoxHost</code>：承载对话框/消息框（具体名称依版本而异）。</p>
+<p><a id="82-窗口中配置-toast-host"></a></p>
+<h3 id="82-toast-host">8.2 窗口中配置 Toast Host<a class="headerlink" href="#82-toast-host" title="Permanent link">&para;</a></h3>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span>
+<span class="normal"><a href="#__codelineno-15-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="nt">&lt;suki:SukiWindow&gt;</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="w">  </span><span class="nt">&lt;suki:SukiWindow.Hosts&gt;</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">    </span><span class="nt">&lt;suki:SukiToastHost</span><span class="w"> </span><span class="na">Manager=</span><span class="s">"{Binding ToastManager}"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="w">  </span><span class="nt">&lt;/suki:SukiWindow.Hosts&gt;</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="w">  </span><span class="cm">&lt;!-- 页面内容 --&gt;</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="nt">&lt;/suki:SukiWindow&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p><a id="83-messagebox-的使用建议"></a></p>
+<h3 id="83-messagebox">8.3 MessageBox 的使用建议<a class="headerlink" href="#83-messagebox" title="Permanent link">&para;</a></h3>
+<p>消息框适用于：
+- 删除、清空、重置等不可逆操作确认
+- 关键配置保存失败
+- 用户必须立即处理的错误</p>
+<p>不建议把所有业务反馈都改成模态弹窗。对于“已保存”“连接恢复”等非阻断消息，优先使用 InfoBar 或 Toast。</p>
+<p>API 名称、参数和返回值在版本间可能有变化，务必从当前安装包的 XML 注释或 Demo 中确认后再封装成项目级 <code>IDialogService</code>。</p>
+<hr />
+<p><a id="9-toast-通知"></a></p>
+<h2 id="9-toast">9. Toast 通知<a class="headerlink" href="#9-toast" title="Permanent link">&para;</a></h2>
+<p>Toast 是短暂、非阻断的消息。官方推荐将 <code>SukiToastHost</code> 放在 <code>SukiWindow.Hosts</code> 中，以便获得较完整的窗口级体验。</p>
+<p><a id="91-viewmodel-管理-toastmanager"></a></p>
+<h3 id="91-viewmodel-toastmanager">9.1 ViewModel 管理 ToastManager<a class="headerlink" href="#91-viewmodel-toastmanager" title="Permanent link">&para;</a></h3>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span>
+<span class="normal"><a href="#__codelineno-16-11">11</a></span>
+<span class="normal"><a href="#__codelineno-16-12">12</a></span>
+<span class="normal"><a href="#__codelineno-16-13">13</a></span>
+<span class="normal"><a href="#__codelineno-16-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">SukiUI.Toasts</span><span class="p">;</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">MainViewModel</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="p">{</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">ISukiToastManager</span><span class="w"> </span><span class="n">ToastManager</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SukiToastManager</span><span class="p">();</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ShowSaved</span><span class="p">()</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="w">        </span><span class="n">ToastManager</span><span class="p">.</span><span class="n">CreateToast</span><span class="p">()</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="w">            </span><span class="p">.</span><span class="n">WithTitle</span><span class="p">(</span><span class="s">"保存成功"</span><span class="p">)</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="w">            </span><span class="p">.</span><span class="n">WithContent</span><span class="p">(</span><span class="s">"设备参数已保存"</span><span class="p">)</span>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="w">            </span><span class="p">.</span><span class="n">Queue</span><span class="p">();</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<blockquote>
+<p>请注意：不同 SukiUI 6.x 小版本的命名空间/构造方式可能有差异。若 IDE 无法识别 <code>SukiUI.Toasts</code> 或 <code>SukiToastManager</code>，应以安装版本的 Demo 和 IntelliSense 为准，不要直接复制其他主版本代码。</p>
+</blockquote>
+<p><a id="92-toast-的常见能力"></a></p>
+<h3 id="92-toast">9.2 Toast 的常见能力<a class="headerlink" href="#92-toast" title="Permanent link">&para;</a></h3>
+<ul>
+<li>标题与正文</li>
+<li>信息/成功/警告/错误类型</li>
+<li>延时关闭</li>
+<li>点击关闭</li>
+<li>点击回调</li>
+<li>操作按钮</li>
+<li>限制同时显示数量</li>
+</ul>
+<p>使用 Toast 时应避免重复通知。例如后台采集每秒变化时，不要每次都弹 Toast；应在状态变化边沿或错误首次发生时通知。</p>
+<hr />
+<p><a id="10-mvvm-集成建议"></a></p>
+<h2 id="10-mvvm">10. MVVM 集成建议<a class="headerlink" href="#10-mvvm" title="Permanent link">&para;</a></h2>
+<p>对 .NET 8 + Avalonia + SukiUI 项目，推荐分层：</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-17-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-17-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-17-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-17-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-17-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-17-10">10</a></span>
+<span class="normal"><a href="#__codelineno-17-11">11</a></span>
+<span class="normal"><a href="#__codelineno-17-12">12</a></span>
+<span class="normal"><a href="#__codelineno-17-13">13</a></span>
+<span class="normal"><a href="#__codelineno-17-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>YourApp
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>├─ Views
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a>│  ├─ MainWindow.axaml
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a>│  ├─ Pages
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a>│  └─ Controls
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6"></a>├─ ViewModels
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7"></a>│  ├─ MainViewModel.cs
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8"></a>│  └─ Pages
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a>├─ Services
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10"></a>│  ├─ NavigationService.cs
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a>│  ├─ DialogService.cs
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12"></a>│  └─ ToastService.cs
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13"></a>├─ Models
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14"></a>└─ Styles
+</span></code></pre></div></td></tr></table></div>
+<p><a id="101-视图只负责展示"></a></p>
+<h3 id="101">10.1 视图只负责展示<a class="headerlink" href="#101" title="Permanent link">&para;</a></h3>
+<ul>
+<li>View：XAML 布局、样式、绑定。</li>
+<li>ViewModel：状态、命令、页面逻辑。</li>
+<li>Service：导航、通知、对话框、设备通信。</li>
+<li>Domain/Infrastructure：PLC、Modbus、数据库等实际业务逻辑。</li>
+</ul>
+<p><a id="102-命令示例"></a></p>
+<h3 id="102">10.2 命令示例<a class="headerlink" href="#102" title="Permanent link">&para;</a></h3>
+<div class="language-csharp highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-18-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-18-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-18-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-18-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-18-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-18-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-18-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-18-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-18-10">10</a></span>
+<span class="normal"><a href="#__codelineno-18-11">11</a></span>
+<span class="normal"><a href="#__codelineno-18-12">12</a></span>
+<span class="normal"><a href="#__codelineno-18-13">13</a></span>
+<span class="normal"><a href="#__codelineno-18-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">CommunityToolkit.Mvvm.ComponentModel</span><span class="p">;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="k">using</span><span class="w"> </span><span class="nn">CommunityToolkit.Mvvm.Input</span><span class="p">;</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="k">public</span><span class="w"> </span><span class="k">partial</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DeviceViewModel</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ObservableObject</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="p">{</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="w">    </span><span class="na">[ObservableProperty]</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">deviceName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">""</span><span class="p">;</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8"></a>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9"></a><span class="w">    </span><span class="na">[RelayCommand]</span>
+</span><span id="__span-18-10"><a id="__codelineno-18-10" name="__codelineno-18-10"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Refresh</span><span class="p">()</span>
+</span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12"></a><span class="w">        </span><span class="c1">// 调用服务刷新数据</span>
+</span><span id="__span-18-13"><a id="__codelineno-18-13" name="__codelineno-18-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-18-14"><a id="__codelineno-18-14" name="__codelineno-18-14"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="nt">&lt;Button</span><span class="w"> </span><span class="na">Content=</span><span class="s">"刷新"</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="w">        </span><span class="na">Classes=</span><span class="s">"Flat Accent"</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="w">        </span><span class="na">Command=</span><span class="s">"{Binding RefreshCommand}"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>不要在 ViewModel 中直接查找控件名称并操作控件；通过属性、Command 和服务通信。</p>
+<hr />
+<p><a id="11-datagrid-与可选组件"></a></p>
+<h2 id="11-datagrid">11. DataGrid 与可选组件<a class="headerlink" href="#11-datagrid" title="Permanent link">&para;</a></h2>
+<p>SukiUI 的核心包和附加组件是分开的。常见可选包包括：</p>
+<ul>
+<li><code>SukiUI.DataGrid</code>：DataGrid 的 SukiUI 样式资源。</li>
+<li><code>SukiUI.ColorPicker</code>：ColorPicker 的主题资源。</li>
+<li><code>SukiUI.ConditionalXAML</code>：条件 XAML/辅助扩展。</li>
+<li><code>SukiUI.Dock</code>：与 Dock.Avalonia 相关的停靠集成（独立包/依赖）。</li>
+</ul>
+<p><a id="111-datagrid"></a></p>
+<h3 id="111-datagrid">11.1 DataGrid<a class="headerlink" href="#111-datagrid" title="Permanent link">&para;</a></h3>
+<p>如果项目使用 DataGrid，先确认 Avalonia DataGrid 包与 SukiUI DataGrid 主题版本匹配，再添加对应包。样式资源一般需要在 <code>SukiTheme</code> 之后引用：</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span>
+<span class="normal"><a href="#__codelineno-20-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nt">&lt;Application.Styles&gt;</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="w">  </span><span class="nt">&lt;suki:SukiTheme</span><span class="w"> </span><span class="na">ThemeColor=</span><span class="s">"Blue"</span><span class="w"> </span><span class="na">Locale=</span><span class="s">"zh-CN"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="w">  </span><span class="nt">&lt;StyleInclude</span><span class="w"> </span><span class="na">Source=</span><span class="s">"avares://SukiUI.DataGrid/Theme/Index.axaml"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="nt">&lt;/Application.Styles&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>不同版本可能调整 DataGrid 包结构或资源 URI。安装后请查看包内 README/示例，不要只凭旧文档中的 URI。</p>
+<p><a id="112-colorpicker"></a></p>
+<h3 id="112-colorpicker">11.2 ColorPicker<a class="headerlink" href="#112-colorpicker" title="Permanent link">&para;</a></h3>
+<p>ColorPicker 可能需要单独安装 Avalonia ColorPicker 与 SukiUI ColorPicker 主题包。按当前包版本的安装说明添加 Fluent ColorPicker 资源和 SukiUI ColorPicker 资源。</p>
+<p><a id="113-conditionalxaml"></a></p>
+<h3 id="113-conditionalxaml">11.3 ConditionalXAML<a class="headerlink" href="#113-conditionalxaml" title="Permanent link">&para;</a></h3>
+<p>核心包不一定包含条件 XAML 辅助功能。只有使用 <code>If</code>、<code>InlineSharp</code> 等扩展时才安装 <code>SukiUI.ConditionalXAML</code>，避免引入不必要的依赖。</p>
+<hr />
+<p><a id="12-自定义样式与资源"></a></p>
+<h2 id="12_1">12. 自定义样式与资源<a class="headerlink" href="#12_1" title="Permanent link">&para;</a></h2>
+<p><a id="121-优先使用-classes"></a></p>
+<h3 id="121-classes">12.1 优先使用 Classes<a class="headerlink" href="#121-classes" title="Permanent link">&para;</a></h3>
+<p>若只是改变按钮、卡片的外观，优先使用 SukiUI 已提供的 Classes：</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="nt">&lt;Button</span><span class="w"> </span><span class="na">Classes=</span><span class="s">"Flat Accent"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="nt">&lt;GlassCard</span><span class="w"> </span><span class="na">Classes=</span><span class="s">"Primary"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>避免为一个按钮复制整套 ControlTheme。复制控件模板会增加升级成本。</p>
+<p><a id="122-自定义-style"></a></p>
+<h3 id="122-style">12.2 自定义 Style<a class="headerlink" href="#122-style" title="Permanent link">&para;</a></h3>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span>
+<span class="normal"><a href="#__codelineno-22-2">2</a></span>
+<span class="normal"><a href="#__codelineno-22-3">3</a></span>
+<span class="normal"><a href="#__codelineno-22-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="nt">&lt;Style</span><span class="w"> </span><span class="na">Selector=</span><span class="s">"Button.primary-action"</span><span class="nt">&gt;</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a><span class="w">  </span><span class="nt">&lt;Setter</span><span class="w"> </span><span class="na">Property=</span><span class="s">"MinWidth"</span><span class="w"> </span><span class="na">Value=</span><span class="s">"120"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="w">  </span><span class="nt">&lt;Setter</span><span class="w"> </span><span class="na">Property=</span><span class="s">"FontWeight"</span><span class="w"> </span><span class="na">Value=</span><span class="s">"SemiBold"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="nt">&lt;/Style&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>使用时：</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="nt">&lt;Button</span><span class="w"> </span><span class="na">Classes=</span><span class="s">"Flat Accent primary-action"</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="w">        </span><span class="na">Content=</span><span class="s">"开始采集"</span><span class="w"> </span><span class="nt">/&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<p>样式选择器应尽量限定范围，避免全局覆盖 SukiUI 默认样式。</p>
+<p><a id="123-图标"></a></p>
+<h3 id="123">12.3 图标<a class="headerlink" href="#123" title="Permanent link">&para;</a></h3>
+<p>可使用 Avalonia <code>PathIcon</code>、项目图标字体或统一的 Icon 控件。建议封装 <code>AppIcon</code>，避免每个页面重复维护 Path 数据。图标必须有明确语义，操作按钮应同时提供 ToolTip 或可读文字。</p>
+<hr />
+<p><a id="13-性能跨平台与发布"></a></p>
+<h2 id="13">13. 性能、跨平台与发布<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p><a id="131-动画与背景"></a></p>
+<h3 id="131">13.1 动画与背景<a class="headerlink" href="#131" title="Permanent link">&para;</a></h3>
+<p>SukiUI 背景可使用 GPU/Shader 渲染，动画背景可能持续触发视觉树重绘。工业上位机建议：</p>
+<ul>
+<li>默认使用 <code>Flat</code> 或低动态背景。</li>
+<li>避免在高频实时数据页启用持续背景动画。</li>
+<li>设备状态刷新只更新必要绑定，不要每次重建整个页面。</li>
+<li>大量卡片使用虚拟化/分页或分区刷新。</li>
+</ul>
+<p><a id="132-跨平台"></a></p>
+<h3 id="132">13.2 跨平台<a class="headerlink" href="#132" title="Permanent link">&para;</a></h3>
+<p>SukiUI 面向 Avalonia 桌面。跨平台部署时仍需验证：
+- Windows、Linux（含目标国产 Linux）字体、窗口装饰和输入法。
+- Skia 原生依赖与 GPU/软件渲染环境。
+- 高 DPI、触摸屏、系统缩放。
+- DataGrid、弹窗、标题栏在目标桌面环境的行为。</p>
+<p><a id="133-发布"></a></p>
+<h3 id="133">13.3 发布<a class="headerlink" href="#133" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>dotnet<span class="w"> </span>publish<span class="w"> </span>-c<span class="w"> </span>Release<span class="w"> </span>-r<span class="w"> </span>win-x64<span class="w"> </span>--self-contained<span class="w"> </span><span class="nb">true</span>
+</span></code></pre></div></td></tr></table></div>
+<p>Linux 示例：</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>dotnet<span class="w"> </span>publish<span class="w"> </span>-c<span class="w"> </span>Release<span class="w"> </span>-r<span class="w"> </span>linux-x64<span class="w"> </span>--self-contained<span class="w"> </span><span class="nb">true</span>
+</span></code></pre></div></td></tr></table></div>
+<p>实际 RID 应按部署环境选择。SukiUI 本身不替代 Avalonia 的发布流程。发布后务必在干净机器/目标系统测试，特别是字体、图形依赖、弹窗、主题和高 DPI。</p>
+<hr />
+<p><a id="14-常见问题排查"></a></p>
+<h2 id="14">14. 常见问题排查<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
+<p><a id="141-sukitheme-找不到"></a></p>
+<h3 id="141-sukitheme">14.1 SukiTheme 找不到<a class="headerlink" href="#141-sukitheme" title="Permanent link">&para;</a></h3>
+<p>检查：
+1. NuGet 是否安装正确。
+2. <code>xmlns:suki="clr-namespace:SukiUI;assembly=SukiUI"</code> 是否正确。
+3. 是否引用了与当前 Avalonia 兼容的 SukiUI 版本。
+4. <code>dotnet restore</code> 后清理并重新生成。</p>
+<p><a id="142-sukiwindow-找不到"></a></p>
+<h3 id="142-sukiwindow">14.2 SukiWindow 找不到<a class="headerlink" href="#142-sukiwindow" title="Permanent link">&para;</a></h3>
+<p>确认窗口命名空间：</p>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>xmlns:suki="clr-namespace:SukiUI.Controls;assembly=SukiUI"
+</span></code></pre></div></td></tr></table></div>
+<p>并确认 Code-behind 继承 <code>SukiWindow</code>，AXAML 根元素和代码后置类一致。</p>
+<p><a id="143-窗口控件透明"></a></p>
+<h3 id="143">14.3 窗口/控件透明<a class="headerlink" href="#143" title="Permanent link">&para;</a></h3>
+<ul>
+<li>检查 <code>SukiTheme</code> 是否设置 <code>ThemeColor</code>。</li>
+<li>检查是否同时加载 Fluent 与 SukiUI 的冲突主题。</li>
+<li>检查是否错误覆盖 Background、Opacity 或主题资源。</li>
+</ul>
+<p><a id="144-主题控件显示异常或-missingmethodexception"></a></p>
+<h3 id="144-missingmethodexception">14.4 主题控件显示异常或 MissingMethodException<a class="headerlink" href="#144-missingmethodexception" title="Permanent link">&para;</a></h3>
+<p>通常与 Avalonia、SukiUI、Skia 相关包版本不一致有关。处理顺序：
+1. 查看 <code>dotnet list package</code>。
+2. 统一 Avalonia 相关包版本。
+3. 检查 SukiUI 依赖最低版本。
+4. 删除 <code>bin</code>、<code>obj</code> 后重新 restore/build。
+5. 不要将 Avalonia 11 和 SukiUI 7（Avalonia 12）混用。</p>
+<p><a id="145-datagrid-没有-sukiui-样式"></a></p>
+<h3 id="145-datagrid-sukiui">14.5 DataGrid 没有 SukiUI 样式<a class="headerlink" href="#145-datagrid-sukiui" title="Permanent link">&para;</a></h3>
+<p>检查是否安装了对应的 <code>SukiUI.DataGrid</code>，并在 <code>SukiTheme</code> 后加载正确主题资源；确认 Avalonia DataGrid 与 SukiUI.DataGrid 版本相容。</p>
+<p><a id="146-toast-不显示"></a></p>
+<h3 id="146-toast">14.6 Toast 不显示<a class="headerlink" href="#146-toast" title="Permanent link">&para;</a></h3>
+<p>检查：
+- 窗口是否配置 <code>SukiToastHost</code>。
+- ViewModel 的 Manager 是否与 Host 使用同一个实例。
+- 是否调用 <code>.Queue()</code>。
+- Host 是否被其他布局遮挡或未加入视觉树。</p>
+<p><a id="147-中文显示为问号或字体异常"></a></p>
+<h3 id="147">14.7 中文显示为问号或字体异常<a class="headerlink" href="#147" title="Permanent link">&para;</a></h3>
+<ul>
+<li>确认系统安装中文字体。</li>
+<li>指定支持中文的 FontFamily，例如目标系统已安装的 Noto Sans CJK / 微软雅黑等。</li>
+<li>检查文件编码为 UTF-8。</li>
+<li>Linux 下确认字体缓存与应用运行用户环境一致。</li>
+</ul>
+<hr />
+<p><a id="15-官方资料与源码索引"></a></p>
+<h2 id="15">15. 官方资料与源码索引<a class="headerlink" href="#15" title="Permanent link">&para;</a></h2>
+<p>以下链接可在有网络时访问；本手册内容已整理为离线阅读，但链接可用于查阅对应版本的最新 API。</p>
+<ul>
+<li>官方文档（英文）：https://kikipoulet.github.io/SukiUI/documentation/</li>
+<li>官方文档（中文）：https://kikipoulet.github.io/SukiUI/zh/documentation/</li>
+<li>GitHub 源码与 Demo：https://github.com/kikipoulet/SukiUI</li>
+<li>Releases：https://github.com/kikipoulet/SukiUI/releases</li>
+<li>NuGet SukiUI：https://www.nuget.org/packages/SukiUI/</li>
+<li>安装说明：https://kikipoulet.github.io/SukiUI/zh/documentation/getting-started/installation.html</li>
+<li>启动应用：https://kikipoulet.github.io/SukiUI/zh/documentation/getting-started/launch.html</li>
+<li>SukiWindow：https://kikipoulet.github.io/SukiUI/documentation/controls/layout/sukiwindow.html</li>
+<li>GlassCard：https://kikipoulet.github.io/SukiUI/zh/documentation/controls/layout/glasscard.html</li>
+<li>Button：https://kikipoulet.github.io/SukiUI/zh/documentation/controls/inputs/button.html</li>
+<li>Toast：https://kikipoulet.github.io/SukiUI/documentation/hosts/toast.html</li>
+<li>背景与 Shader：https://kikipoulet.github.io/SukiUI/documentation/theming/background.html</li>
+</ul>
+<hr />
+<p><a id="附录-a最小可运行集成检查表"></a></p>
+<h2 id="a">附录 A：最小可运行集成检查表<a class="headerlink" href="#a" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 项目目标框架为 <code>net8.0</code> 或符合包要求的版本。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Avalonia 与 SukiUI 版本依赖已统一。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 安装 SukiUI NuGet 包。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>App.axaml</code> 注册 <code>SukiTheme</code>，设置 <code>ThemeColor</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 中文界面需要时设置 <code>Locale="zh-CN"</code>。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 主窗口 AXAML 根元素与 Code-behind 的 <code>SukiWindow</code> 继承一致。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 已验证 Button、TextBox、ComboBox、DataGrid 的样式。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Toast/Dialog Host 与 Manager 使用同一个实例。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 已在实际目标操作系统验证字体、DPI、窗口和图形渲染。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 已执行 <code>dotnet publish</code> 并在干净环境完成测试。</li>
+</ul>
+<hr />
+<p><strong>编写日期：2026-11-26</strong><br />
+<strong>建议维护方式：</strong> 将本手册放入项目的 <code>docs/SukiUI-中文离线手册.md</code>，每次升级 SukiUI/Avalonia 后更新“版本兼容表”和“可选组件”章节。</p>
+<hr />
+<h2 id="_2">相关页面<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../">返回 Avalonia 分组首页</a></li>
+<li><a href="../MVVM/">MVVM</a>：ViewModel、命令与 SukiUI 的分层建议</li>
+<li><a href="../DataBinding/">数据绑定</a>：绑定模式、集合刷新与上位机实时数据</li>
+<li><a href="../CustomControls/">自定义控件</a>：样式类、ControlTheme 与设备状态控件</li>
+<li><a href="../Navigation/">页面导航</a>：SukiSideMenu、内容切换与 ViewModel 生命周期</li>
+<li><a href="../../">MyWiki 首页</a> · <a href="../../DevOps/KylinV11/">DevOps / Kylin V11</a>：目标系统上的字体与渲染验证</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: Avalonia 首页">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Avalonia 首页
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../MVVM/" class="md-footer__link md-footer__link--next" aria-label="下一页: MVVM">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                MVVM
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 MyWiki
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.tracking", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "content.code.copy", "content.code.select", "content.code.annotate", "content.tabs.link", "content.tooltips"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+    
+  </body>
+</html>
