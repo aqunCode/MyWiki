@@ -1,0 +1,579 @@
+
+# ============================================================
+# MkDocs 项目基础配置
+# 文件名称：mkdocs.yml
+# 项目名称：MyWiki
+# 主题：Material for MkDocs
+# ============================================================
+
+
+# ------------------------------------------------------------
+# 1. 网站基本信息
+# ------------------------------------------------------------
+
+# 网站标题
+# 显示在浏览器标题、网站导航栏等位置
+site_name: MyWiki
+
+# 网站描述
+# 可用于搜索引擎和网站元数据
+site_description: 个人技术知识库，记录 C#、.NET、Avalonia、PLC、Oracle 等技术文档
+
+# 网站作者
+site_author: zhangyq
+
+# 网站地址
+# 如果部署到 GitHub Pages、Nginx 等网站，需要填写实际地址
+# 如果仅在本地使用，可以暂时不配置
+# site_url: https://your-domain.com/
+
+# 网站版权信息
+copyright: Copyright &copy; 2026 MyWiki
+
+# 网站仓库地址
+# 如果使用 GitHub/GitLab 管理文档，可以配置仓库地址
+# repo_url: https://github.com/your-name/MyWiki
+
+# 仓库名称
+# 显示在页面右上角的仓库链接位置
+# repo_name: GitHub
+
+# 仓库默认分支
+# edit_uri 使用相对路径时，需要根据实际仓库分支调整
+# edit_uri: edit/main/docs/
+
+# 文档编辑地址
+# 启用后，页面可以显示编辑文档的链接
+# edit_uri: edit/main/docs/
+
+
+# ------------------------------------------------------------
+# 2. 文档目录配置
+# ------------------------------------------------------------
+
+# Markdown 文档所在目录
+# 默认就是项目根目录下的 docs
+docs_dir: docs
+
+# MkDocs 构建后生成的网站目录
+# 执行 mkdocs build 后生成
+site_dir: site
+
+# 是否使用目录形式的 URL
+# true：
+#   docs/Avalonia/index.md
+#   生成 site/Avalonia/index.html
+#
+# false：
+#   生成 site/Avalonia.html
+use_directory_urls: true
+
+# 是否严格检查文档错误
+# false：构建时显示警告，但不一定中断
+# true：出现警告时构建失败
+#
+# 开发阶段建议 false
+# 发布阶段可以改成 true
+strict: false
+
+# 是否在构建时清理旧的 site 目录
+# 注意：clean 是命令行参数，不是 mkdocs.yml 的合法配置项。
+# MkDocs 1.6 会在构建时输出 "Unrecognised configuration name: clean" 警告，
+# 需要清理时请改用命令：mkdocs build --clean
+# clean: true
+
+# ------------------------------------------------------------
+# 3. 主题配置
+# ------------------------------------------------------------
+
+theme:
+
+  # 使用 Material 主题
+  name: material
+
+  # 网站语言
+  # zh 表示简体中文
+  language: zh
+
+  # 网站图标
+  # 使用 Material Design Icons
+  # 可以替换为其他图标名称
+  icon:
+    logo: material/book-open-page-variant
+    repo: fontawesome/brands/github
+
+  # 字体配置
+  # false 表示不加载 Google Fonts
+  # 对离线构建、内网知识库比较友好
+  font: false
+
+  # 主题配色
+  palette:
+
+    # --------------------------------------------------------
+    # 浅色模式
+    # --------------------------------------------------------
+    - media: "(prefers-color-scheme: light)"
+
+      # 配色方案名称
+      scheme: default
+
+      # 主色调
+      primary: indigo
+
+      # 辅助色
+      accent: blue
+
+      # 用户切换按钮
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到深色模式
+
+    # --------------------------------------------------------
+    # 深色模式
+    # --------------------------------------------------------
+    - media: "(prefers-color-scheme: dark)"
+
+      scheme: slate
+
+      primary: indigo
+
+      accent: cyan
+
+      toggle:
+        icon: material/weather-night
+        name: 切换到浅色模式
+
+  # ----------------------------------------------------------
+  # Material 主题功能
+  # ----------------------------------------------------------
+  features:
+
+    # 导航栏显示顶部标签
+    # 说明：启用后一级分组会移到顶部标签栏，左侧只显示当前标签下的页面。
+    # 本知识库需要在左侧完整呈现「分组 → 页面」层级，因此不启用。
+    # - navigation.tabs
+
+    # 标签栏在滚动时保持显示
+    # 注意：navigation.tabs.sticky 必须配合 navigation.tabs 才生效，
+    # 单独启用不会有任何效果，故此处不启用。
+    # - navigation.tabs.sticky
+
+    # 导航分组：把一级分组渲染成区块标题
+    # 注意：该特性会把子页面「反缩进」，需要配合
+    # docs/stylesheets/extra.css 中的层级缩进样式恢复缩进。
+    - navigation.sections
+
+    # 自动展开导航：让分组下的子页面默认可见，便于看清层级
+    - navigation.expand
+
+    # 导航锚点跟随页面滚动
+    - navigation.tracking
+
+    # 显示返回顶部按钮
+    - navigation.top
+
+    # 页面底部显示上一页/下一页
+    - navigation.footer
+
+    # 目录跟随页面滚动
+    - toc.follow
+
+    # 搜索建议
+    - search.suggest
+
+    # 搜索结果高亮
+    - search.highlight
+
+    # 代码块复制按钮
+    - content.code.copy
+
+    # 代码块选择按钮
+    - content.code.select
+
+    # 支持代码块注释
+    - content.code.annotate
+
+    # 支持内容标签页联动
+    - content.tabs.link
+
+    # 支持鼠标悬停提示
+    - content.tooltips
+
+    # --------------------------------------------------------
+    # 以下功能根据需要启用
+    # --------------------------------------------------------
+
+    # 页面即时加载
+    # 开启后点击页面时不会完整刷新整个网站
+    # - navigation.instant
+
+    # 页面即时预加载
+    # - navigation.instant.prefetch
+
+    # 页面加载进度条
+    # - navigation.instant.progress
+
+    # 页面编辑按钮
+    # 需要配置 repo_url 和 edit_uri
+    # - content.action.edit
+
+    # 页面查看源文件按钮
+    # - content.action.view
+
+
+# ------------------------------------------------------------
+# 4. 导航菜单
+# ------------------------------------------------------------
+
+# nav 用于定义网站左侧导航菜单
+#
+# 注意：
+# 1. 文件路径相对于 docs 目录
+# 2. 文件必须真实存在
+# 3. index.md 通常作为目录首页
+# 4. 如果暂时没有某个文件，可以先删除对应导航项
+#
+# 层级约定（YAML 缩进即导航层级）：
+#   - 首页                     一级：独立页面
+#   - C# / .NET:              一级：分组标题（不带文件，不可点击）
+#       - C# 基础: xxx.md     二级：分组下的页面，靠 extra.css 缩进显示
+#
+# 左侧导航的层级缩进由 docs/stylesheets/extra.css 控制，
+# 修改 nav 层级后无需改动 CSS，样式按 data-md-level 自动适配。
+
+nav:
+
+  # 网站首页
+  - 首页: index.md
+
+  # ----------------------------------------------------------
+  # C# / .NET
+  # ----------------------------------------------------------
+  - C# / .NET:
+      - C# 基础: CSharp/index.md
+      - LINQ: CSharp/LINQ.md
+      - 异步编程: CSharp/Async.md
+      - 反射: CSharp/Reflection.md
+      - 性能优化: CSharp/Performance.md
+
+  # ----------------------------------------------------------
+  # Avalonia
+  # ----------------------------------------------------------
+  - Avalonia:
+      - Avalonia 首页: Avalonia/index.md
+      - SukiUI: Avalonia/SukiUI.md
+      - MVVM: Avalonia/MVVM.md
+      - 数据绑定: Avalonia/DataBinding.md
+      - 自定义控件: Avalonia/CustomControls.md
+      - 页面导航: Avalonia/Navigation.md
+
+  # ----------------------------------------------------------
+  # PLC / 工业控制
+  # ----------------------------------------------------------
+  - PLC / 工业控制:
+      - PLC 首页: PLC/index.md
+      - Modbus: PLC/Modbus.md
+      - 西门子 PLC: PLC/Siemens.md
+      - 串口通信: PLC/SerialPort.md
+      - 数据采集: PLC/DataAcquisition.md
+
+  # ----------------------------------------------------------
+  # 数据库
+  # ----------------------------------------------------------
+  - 数据库:
+      - 数据库首页: Database/index.md
+      - Oracle 19c: Database/Oracle19c.md
+      - MySQL: Database/MySQL.md
+      - SQLite: Database/SQLite.md
+      - SqlSugar: Database/SqlSugar.md
+      - EF Core: Database/EFCore.md
+
+  # ----------------------------------------------------------
+  # DevOps / 部署
+  # ----------------------------------------------------------
+  - DevOps:
+      - DevOps 首页: DevOps/index.md
+      - Git: DevOps/Git.md
+      - Docker: DevOps/Docker.md
+      - Linux: DevOps/Linux.md
+      - Kylin V11: DevOps/KylinV11.md
+
+  # ----------------------------------------------------------
+  # 工具与其他
+  # ----------------------------------------------------------
+  - 工具:
+      - 工具首页: Tools/index.md
+      - Visual Studio: Tools/VisualStudio.md
+      - PowerShell: Tools/PowerShell.md
+      - MkDocs: Tools/MkDocs.md
+
+
+# ------------------------------------------------------------
+# 5. 插件配置
+# ------------------------------------------------------------
+
+# 一旦配置 plugins，MkDocs 默认插件列表就会被覆盖
+# 因此需要明确保留 search 插件
+#
+# Material 自带 search 插件，无需单独安装
+plugins:
+
+  # ----------------------------------------------------------
+  # 搜索插件
+  # ----------------------------------------------------------
+  - search:
+
+      # 搜索索引语言
+      # zh 表示中文
+      lang: zh
+
+      # 搜索词分隔符
+      # 支持按空格、连字符、点号、冒号等拆分
+      # 对 Oracle、PLC 地址、C# 类型名称等内容比较有帮助
+      separator: '[\s\-.:_/]+'
+
+      # 最小搜索长度
+      # 注意：Material 的 material/search 插件不支持 min_search_length，
+      # 配置后会输出 "Unsupported option" 警告，因此这里不设置。
+      # 若确实需要，可改用 MkDocs 内置 search 插件并自行配置。
+      # min_search_length: 2
+
+      # 是否启用搜索
+      enabled: true
+
+  # ----------------------------------------------------------
+  # 以下是可选插件
+  # 需要先安装对应 Python 包，再取消注释
+  # ----------------------------------------------------------
+
+  # Git 文档更新时间插件
+  # 安装：
+  # pip install mkdocs-git-revision-date-localized-plugin
+  #
+  # - git-revision-date-localized:
+  #     type: date
+  #     locale: zh
+  #     enable_creation_date: true
+
+  # 文档压缩插件
+  # 安装：
+  # pip install mkdocs-minify-plugin
+  #
+  # - minify:
+  #     minify_html: true
+  #     minify_js: true
+  #     minify_css: true
+
+  # 离线文档插件
+  # 安装：
+  # pip install mkdocs-material
+  #
+  # - offline
+
+
+# ------------------------------------------------------------
+# 6. Markdown 扩展
+# ------------------------------------------------------------
+
+markdown_extensions:
+
+  # ----------------------------------------------------------
+  # 基础 Markdown 扩展
+  # ----------------------------------------------------------
+
+  # 支持提示框
+  # !!! note
+  #     这是一个提示
+  - admonition
+
+  # 支持 Markdown 属性
+  # 可为标题、图片、代码块等添加 CSS 属性
+  - attr_list
+
+  # 支持定义列表
+  - def_list
+
+  # 支持脚注
+  - footnotes
+
+  # 支持在 Markdown 中嵌入 HTML
+  - md_in_html
+
+  # 支持表格
+  - tables
+
+  # ----------------------------------------------------------
+  # 目录扩展
+  # ----------------------------------------------------------
+
+  - toc:
+      # 目录锚点
+      permalink: true
+
+      # 目录标题
+      title: 本页目录
+
+      # 目录层级
+      # 1-6 表示支持所有级别标题
+      # 可根据需要调整
+      toc_depth: 3
+
+  # ----------------------------------------------------------
+  # PyMdown 扩展
+  # ----------------------------------------------------------
+
+  # 支持更丰富的 Markdown 语法
+  - pymdownx.betterem
+
+  # 支持删除线、下划线等格式
+  - pymdownx.mark
+
+  # 支持键盘按键
+  # 示例：++ctrl+alt+del++
+  - pymdownx.keys
+
+  # 支持任务列表
+  # - [x] 已完成
+  # - [ ] 未完成
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  # 支持内容标签页
+  - pymdownx.tabbed:
+      alternate_style: true
+
+  # 支持折叠内容
+  - pymdownx.details
+
+  # 支持更灵活的代码块
+  - pymdownx.superfences
+
+  # ----------------------------------------------------------
+  # 代码高亮
+  # ----------------------------------------------------------
+
+  - pymdownx.highlight:
+
+      # 显示代码行号
+      linenums: true
+
+      # 行号锚点
+      anchor_linenums: true
+
+      # 代码行标识
+      line_spans: __span
+
+      # 为代码块添加语言 CSS 类
+      pygments_lang_class: true
+
+      # 默认代码语言
+      # 未指定语言时使用 text
+      # default_lang: text
+
+  # ----------------------------------------------------------
+  # Emoji / 图标
+  # ----------------------------------------------------------
+
+  # 支持 Emoji 和 Material 图标
+  # 示例：
+  # :smile:
+  # :material-check-circle:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # ----------------------------------------------------------
+  # 数学公式
+  # ----------------------------------------------------------
+
+  # 支持数学公式语法
+  # 注意：数学公式的实际渲染还需要 MathJax 或 KaTeX
+  - pymdownx.arithmatex:
+      generic: true
+
+
+# ------------------------------------------------------------
+# 7. 额外 CSS
+# ------------------------------------------------------------
+
+# 自定义 CSS 文件
+# 文件必须放在 docs 目录下
+extra_css:
+
+  # 自定义样式
+  - stylesheets/extra.css
+
+
+# ------------------------------------------------------------
+# 8. 额外 JavaScript
+# ------------------------------------------------------------
+
+# 自定义 JavaScript 文件
+# 文件必须放在 docs 目录下
+extra_javascript:
+
+  # 数学公式渲染
+  # 如果不使用数学公式，可以删除以下配置
+  - javascripts/mathjax.js
+
+
+# ------------------------------------------------------------
+# 9. 额外配置
+# ------------------------------------------------------------
+
+extra:
+
+  # ----------------------------------------------------------
+  # 社交链接
+  # ----------------------------------------------------------
+  social:
+
+    # GitHub 地址
+    # 修改为自己的实际地址
+    # - icon: fontawesome/brands/github
+    #   link: https://github.com/your-name
+    #   name: GitHub
+
+    # 博客地址
+    # - icon: material/web
+    #   link: https://your-blog.com
+    #   name: 个人博客
+
+  # ----------------------------------------------------------
+  # 网站统计
+  # ----------------------------------------------------------
+  # 如果使用 Google Analytics，可以配置
+  # analytics:
+  #   provider: google
+  #   property: G-XXXXXXXXXX
+
+  # ----------------------------------------------------------
+  # 版本信息
+  # ----------------------------------------------------------
+  # 可在页面中显示自定义版本
+  # version: 1.0.0
+
+
+# ------------------------------------------------------------
+# 10. 构建排除规则
+# ------------------------------------------------------------
+
+# 不参与网站构建的文件
+# 可用于排除草稿、临时文件等
+exclude_docs: |
+  **/.gitignore
+  **/README.tmp.md
+  **/drafts/**
+
+
+# ------------------------------------------------------------
+# 11. 监视目录
+# ------------------------------------------------------------
+
+# 执行 mkdocs serve 时，额外监视指定目录
+# 修改这些目录中的文件时自动重新构建
+#
+# watch:
+#   - scripts
+#   - stylesheets
