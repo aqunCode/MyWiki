@@ -23,9 +23,10 @@ site_description: 个人技术知识库，记录 C#、.NET、Avalonia、PLC、Or
 site_author: zhangyq
 
 # 网站地址
-# 如果部署到 GitHub Pages、Nginx 等网站，需要填写实际地址
-# 如果仅在本地使用，可以暂时不配置
-# site_url: https://your-domain.com/
+# 部署到 GitHub Pages 后必须填写，否则页面中的绝对链接可能指向 localhost。
+# 本仓库：https://github.com/aqunCode/MyWiki
+# 对应 Pages 地址：https://aquncode.github.io/MyWiki/
+site_url: https://aquncode.github.io/MyWiki/
 
 # 网站版权信息
 copyright: Copyright &copy; 2026 MyWiki
